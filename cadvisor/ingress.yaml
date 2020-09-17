@@ -1,0 +1,15 @@
+kind: Ingress
+metadata:
+  name: cadvisor
+  namespace: monitoring
+  annotations:
+    kubernetes.io/ingress.class: traefik
+spec:
+  rules:
+  - host: cadvisor.houmin
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: cadvisor
+          servicePort: cadvisor
