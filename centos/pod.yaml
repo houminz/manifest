@@ -5,6 +5,16 @@ metadata:
 spec:
   containers:
   - name: centos
-    image: centos
+    image: centos:7
+    imagePullPolicy: Always
+    resources:
+      requests:
+        memory: "256Mi"
+        cpu: "2"
+      limits:
+        memory: "256Mi"
+        cpu: "2"
+    securityContext:
+      privileged: true
     command: [ "/bin/bash", "-c", "--" ]
     args: [ "while true; do sleep 30; done;" ]

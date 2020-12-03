@@ -16,6 +16,5 @@ spec:
         cpu: "2"
     securityContext:
       privileged: true
-    # Just spin & wait forever
     command: [ "/bin/bash", "-c", "--" ]
     args: [ "while true; do sleep 30; done;" ]
