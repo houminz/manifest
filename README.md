@@ -1,4 +1,3 @@
-# k8sDemo
+# mainfest
 
-Demo On Kubernetes
-
+easy manifests for k8s application
