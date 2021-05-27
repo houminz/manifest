@@ -116,17 +116,17 @@ data:
   # wait-bpf-mount makes init container wait until bpf filesystem is mounted
   wait-bpf-mount: "false"
 
-  masquerade: "false"
+  masquerade: "true"
   enable-bpf-masquerade: "false"
   enable-local-node-route: "true"
 
   enable-xt-socket-fallback: "true"
-  install-iptables-rules: "false"
+  install-iptables-rules: "true"
 
   auto-direct-node-routes: "false"
   enable-bandwidth-manager: "false"
   enable-local-redirect-policy: "false"
-  kube-proxy-replacement:  "probe"
+  kube-proxy-replacement:  "partial"
   kube-proxy-replacement-healthz-bind-address: ""
   enable-health-check-nodeport: "true"
   node-port-bind-protection: "true"
