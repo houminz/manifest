@@ -1,0 +1,63 @@
+apiVersion: kubevirt.io/v1
+kind: VirtualMachineInstance
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1alpha3
+  finalizers:
+  - kubevirt.io/virtualMachineControllerFinalize
+  - foregroundDeleteVirtualMachine
+  name: win2k19
+  namespace: default
+spec:
+  domain:
+    cpu:
+      cores: 4
+      model: host-model
+    devices:
+      disks:
+      - bootOrder: 2
+        cdrom:
+          bus: sata
+          readonly: true
+          tray: closed
+        name: cdromiso
+      - bootOrder: 1
+        disk:
+          bus: virtio
+        name: harddrive
+      - cdrom:
+          bus: sata
+          readonly: true
+          tray: closed
+        name: virtiocontainerdisk
+      interfaces:
+      - bridge: {}
+        model: e1000
+        name: default
+    features:
+      acpi:
+        enabled: true
+    firmware:
+      uuid: 9c8e0b59-d5b1-5f45-bc7d-b31ab0e65899
+    machine:
+      type: q35
+    resources:
+      requests:
+        memory: 16G
+  networks:
+  - name: default
+    pod: {}
+  volumes:
+  - name: cdromiso
+    persistentVolumeClaim:
+      claimName: iso-win10-2
+  - hostDisk:
+      capacity: 50Gi
+      path: /opt/wintest/disk.img
+      type: DiskOrCreate
+    name: harddrive
+  - containerDisk:
+      image: quay.io/kubevirt/virtio-container-disk:v0.36.4
+      imagePullPolicy: IfNotPresent
+    name: virtiocontainerdisk

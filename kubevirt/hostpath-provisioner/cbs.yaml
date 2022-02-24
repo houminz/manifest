@@ -1,0 +1,32 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  annotations:
+    storageclass.beta.kubernetes.io/is-default-class: "true"
+  creationTimestamp: "2022-02-22T08:43:44Z"
+  managedFields:
+  - apiVersion: storage.k8s.io/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:storageclass.beta.kubernetes.io/is-default-class: {}
+      f:parameters:
+        .: {}
+        f:type: {}
+      f:provisioner: {}
+      f:reclaimPolicy: {}
+      f:volumeBindingMode: {}
+    manager: tke-operator
+    operation: Update
+    time: "2022-02-22T08:43:44Z"
+  name: cbs
+  resourceVersion: "1475003308"
+  selfLink: /apis/storage.k8s.io/v1/storageclasses/cbs
+  uid: 1f0b68ff-9cf6-4c0f-acb6-f51a69437b9d
+parameters:
+  type: cbs
+provisioner: com.tencent.cloud.csi.cbs
+reclaimPolicy: Delete
+volumeBindingMode: Immediate
